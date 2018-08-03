@@ -1,6 +1,21 @@
 .multiStateBtn{
   width: 140px;
   height: 40px;
-  border: 1px solid #f2f2f2;
-  box-shadow: 3px 3px 2px #a9a9a9;
+  /* border: 1px solid #f2f2f2; */
+  border-radius: 10px;
+  /* box-shadow: 3px 3px 2px #a9a9a9; */
+  background-color: rgb(7, 71, 166);
+  color: rgb(222, 235, 255);
+  /* border: rgb(222, 235, 255) 2px solid; */
+  border: none;
+  cursor: pointer;
+  transition: all .2s;
+}
+.multiStateBtn:hover{
+  /* border: rgb(7, 71, 166) 2px solid; */
+  color: rgb(7, 71, 166);
+  background-color: rgb(222, 235, 255);
+}
+.multiStateBtn:focus{
+  outline: none;
 }
