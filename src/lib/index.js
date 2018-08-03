@@ -17,10 +17,11 @@ class MultiStateButtonComponent extends Component {
     if( currentIndex < keys.length - 1){
       nextIndex = currentIndex + 1
     } else {
-      nextIndex = 0
+      if(this.props.loop) {
+        nextIndex = 0
+      }
     }
     this.setState({currentState: keys[nextIndex]})
-    console.log('currentState', keys[nextIndex])
     this.props.onChange(keys[nextIndex])
    };
 

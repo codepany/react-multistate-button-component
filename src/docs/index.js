@@ -5,23 +5,23 @@ import "./styles.css";
 
   const BUTTON_OPTIONS = {
     'toDo': {
-      'color' : 'red',
-      'background': 'black',
+      'color' : 'white',
+      'background': 'rgb(255,0,0)',
       'text' : 'To do'
     },
     'inProgress': {
-      'color' : 'blue',
-      'background': 'white',
+      'color' : 'white',
+      'background': 'rgb(211,72,54)',
       'text' : 'In progress'
     },
     'needsReview': {
-      'color' : 'yellow',
-      'background': 'blue',
+      'color' : 'white',
+      'background': '#f91',
       'text' : 'Needs review'
     },
     'done' : {
-      'color' : 'green',
-      'background': 'gray',
+      'color' : 'white',
+      'background': 'green',
       'text' : 'Done'
     },
   }
@@ -30,27 +30,51 @@ class Demo extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      taskState: 'inProgress'
+      taskState: 'toDo',
+      taskStateNoLoop: 'toDo'
     }
     this.changeTaskState = this.changeTaskState.bind(this)
+    this.changeTaskStateNoLoop = this.changeTaskStateNoLoop.bind(this)
   }
 
   changeTaskState = (s) => {
-    console.log('task state changed', s)
     this.setState({ taskState: s })
+  }
+
+  changeTaskStateNoLoop = (s) => {
+    this.setState({ taskStateNoLoop: s })
   }
 
   render(){
     return (
-      <div>
-      <h1>Demo with examples of the component: {BUTTON_OPTIONS[this.state.taskState].text}</h1>
-
-        <MyComponent
-          options={BUTTON_OPTIONS}
-          defaultValue = {'inProgress'}
-          onChange={(s) => this.changeTaskState(s)}
-        />
-
+      <div className={'multistateButtonContainer'}>
+        <section className={'headerSection section'}>
+          <h1 className={'title'}>Demo with examples of the MultiStateButtonComponent</h1>
+          <p>Application to change status. There are four statuses: 'To do', 'In progres', 'Needs review' and 'Done'.</p>
+        </section>
+        <section className={'examplesSection section'}>
+          <div className={'examples'}>
+            <h2>Example 1</h2>
+            <p>Click the button to change your status in loop.</p>
+            <MyComponent
+            options={BUTTON_OPTIONS}
+            defaultValue = {'toDo'}
+            onChange={(s) => this.changeTaskState(s)}
+            loop={true}
+            />
+            <p>Status: {BUTTON_OPTIONS[this.state.taskState].text}</p>
+          </div>
+          <div className={'examples'}>
+            <h2>Example 2</h2>
+            <p>Click the button to change your status without loop. Finish on status 'Done'.</p>
+            <MyComponent
+            options={BUTTON_OPTIONS}
+            defaultValue = {'toDo'}
+            onChange={(s) => this.changeTaskStateNoLoop(s)}
+            />
+            <p>Status: {BUTTON_OPTIONS[this.state.taskStateNoLoop].text}</p>
+          </div>
+        </section>
       </div>
     );
   }
