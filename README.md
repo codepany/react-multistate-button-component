@@ -1,13 +1,15 @@
 # REACT-MULTISTATE-BUTTON
 
-Project to check status in application.
+Multistate button allows to control the status of your data in the loop.
+To check the demo version click:
+https://codepany.github.io/react-multistate-button-component/
 
 ## Technologies
 
 * JavaScript
 * ReactJS
 
-## Gettins started
+## Getting started
 
 Follow these steps to get started developing your own react component:
 
